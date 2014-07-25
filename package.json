@@ -1,6 +1,6 @@
 {
   "name": "gulp-resx2js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Converts Visual Studio resx files to JavaScript objects.",
   "main": "index.js",
   "scripts": {

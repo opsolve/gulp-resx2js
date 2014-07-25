@@ -1,4 +1,4 @@
-var through = require('through2');
+var through2 = require('through2');
 var xmldoc = require('xmldoc');
 var gutil = require('gulp-util');
 var rext = require('replace-ext');
@@ -9,7 +9,7 @@ const PLUGIN_NAME = 'gulp-resx2js';
 function resx2JS(options) {
 	options = options || {};
 
-	var stream = through.obj(function(file, enc, callback) {
+	var stream = through2.obj(function(file, enc, callback) {
 		var content, document, children, outputObj = {};
 
 		if (file.isNull()) {
@@ -32,7 +32,7 @@ function resx2JS(options) {
 
 		file.path = rext(file.path, '.js');
 		console.log('Resource file generated: ' + file.path)
-		file.content = new Buffer(JSON.stringify(outputObj));
+		file.contents = new Buffer(JSON.stringify(outputObj));
 
 		this.push(file);
 		return callback();
