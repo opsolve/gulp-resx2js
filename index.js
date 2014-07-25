@@ -10,7 +10,7 @@ function resx2JS(options) {
 	options = options || {};
 
 	var stream = through2.obj(function(file, enc, callback) {
-		var content, document, children, outputObj = {};
+		var content, document, children, childNode, outputObj = {};
 
 		if (file.isNull()) {
 			this.push(file);
@@ -26,12 +26,12 @@ function resx2JS(options) {
 
 		children = document.childrenNamed('data');
 
-		for(var c in children) {
-			outputObj[children[c].attr.name] = children[c].children[0].val;
+		for(childNode in children) {
+			outputObj[children[childNode].attr.name] = children[childNode].children[0].val;
 		}
 
 		file.path = rext(file.path, '.js');
-		console.log('Resource file generated: ' + file.path)
+		console.log('Resource file generated: ' + file.path);
 		file.contents = new Buffer(JSON.stringify(outputObj));
 
 		this.push(file);
