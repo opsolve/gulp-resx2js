@@ -30,7 +30,7 @@ function resx2JS(options) {
 			outputObj[children[childNode].attr.name] = children[childNode].children[0].val;
 		}
 
-		file.path = rext(file.path, '.js');
+		file.path = rext(file.path, '.json');
 		console.log('Resource file generated: ' + file.path);
 		file.contents = new Buffer(JSON.stringify(outputObj));
 
